@@ -7,7 +7,6 @@ public class Main {
     static List<Item> basket = new ArrayList<>(); //Принцип инверсии зависимостей
     static List<Item> catalogue = new ArrayList<>(); //Принцип инверсии зависимостей
     static Scanner scanner = new Scanner(System.in);
-    static Recommendations rec = new Recommendations();
     static int wallet;
 
     public static void main(String[] args) {
