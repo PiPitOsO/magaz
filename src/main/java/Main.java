@@ -125,7 +125,6 @@ public class Main {
             System.out.println("Корзина пуста!");
         } else {
             int sum = basketPrice();
-//            recommend();
             soutBasket();
             System.out.println("Нажмите ENTER чтобы подтвердить покупку");
             scanner.nextLine();
@@ -144,24 +143,6 @@ public class Main {
             }
         }
     }
-
-//    public static void recommend() { //Принцип сегрегации интерфейса
-//        System.out.println("У нас для вас новая рекомендация!");
-//        Item item = rec.recommendation(basket);
-//        System.out.println(item.toStringInBasket());
-//        System.out.print("Хотите приобрести? (1 - \"да\"/2 - \"нет\") -> ");
-//        int input = scanner.nextInt();
-//        switch (input) {
-//            case (1) -> {
-//                System.out.print("Введите кол-во -> ");
-//                int num = scanner.nextInt();
-//                item.setNumber(num);
-//                basket.add(item);
-//            }
-//            case (2) -> System.out.println("Зря отказались!");
-//            default -> System.out.println("Вы ввели неверное значение");
-//        }
-//    }
 
     public static void soutBasket() { //DRY и принцип сегрегации интерфейса
         if (basket.size() == 0) {
