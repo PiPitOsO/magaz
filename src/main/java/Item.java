@@ -1,8 +1,8 @@
-public class Item { //Принцип единственной ответственности и принцип сегрегации интерфейса
-    Products name;
-    Class category;
-    int number;
-    int price;
+public class Item { //Принцип единственной ответственности
+    private final Products name;
+    private final Class category;
+    private int number;
+    private final int price;
 
     public Item(Products name, Class category, int number, int price) {
         this.name = name;
@@ -21,9 +21,8 @@ public class Item { //Принцип единственной ответстве
     public String toStringInBasket() {
         return "Товар: " + name +
                 ", количество в корзине - " + number +
-                ", цена - " + price + " (" + price*number + ")";
+                ", цена - " + price + " (" + price * number + ")";
     }
-
 
     public Products getName() {
         return name;

@@ -3,13 +3,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-
-    static List<Item> basket = new ArrayList<>();
-    static List<Item> catalogue = new ArrayList<>(); //Принцип инверсии зависимостей
-    static Scanner scanner = new Scanner(System.in);
-    static int wallet;
-
     public static void main(String[] args) {
+        IMagazin mag = new Magazin(); // Принцип инверсии зависимостей
+        List<Item> basket = new ArrayList<>();
+        List<Item> catalogue = new ArrayList<>();
         catalogue.add(new Item(Products.aPHONE12, Class.PHONE, 12, 1000));
         catalogue.add(new Item(Products.aPHONE12mini, Class.PHONE, 14, 900));
         catalogue.add(new Item(Products.aPHONE12pro, Class.PHONE, 10, 1200));
@@ -25,7 +22,8 @@ public class Main {
         System.out.println("\nAnanas-Express");
         System.out.println("Добро пожаловать в маленький интернет-магазинчик ананасовой продукции!");
         System.out.print("Какую сумму Вы хотите добавить на виртуальный кошелек? -> ");
-        wallet = scanner.nextInt();
+        Scanner scanner = new Scanner(System.in);
+        int wallet = scanner.nextInt();
         System.out.println("Ваш баланс: " + wallet + "$");
         while (true) {
             System.out.println("Выберете действие (введите номер):");
@@ -41,23 +39,21 @@ public class Main {
                 System.out.println(wallet + "$");
             } else if (input == 2) {
                 try {
-                    Magazin.addItem();
+                    mag.addItem(basket, catalogue);
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
             } else if (input == 3) {
-                Magazin.deleteItem();
-                System.out.println("Выберете позицию для удаления");
+                mag.deleteItem(basket);
             } else if (input == 4) {
-                basket.clear();
-                System.out.println("Корзина пуста");
+                mag.clearBasket(basket);
             } else if (input == 5) {
-                System.out.println(Magazin.basketPrice() + "$");
+                mag.basketPriceResult(basket);
             } else if (input == 6) {
-                Magazin.soutBasket();
+                mag.soutBasket(basket);
             } else if (input == 7) {
                 try {
-                    Magazin.buy();
+                    mag.buy(wallet, basket);
                     break;
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
